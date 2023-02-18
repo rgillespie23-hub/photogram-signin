@@ -18,6 +18,7 @@ class PhotosController < ApplicationController
 
   def show
     p_id = params.fetch("the_photo_id")
+    @user_id = session.fetch(:user_id)
     @photo = Photo.where({:id => p_id }).first
     render({:template => "photos/details.html.erb"})
   end
